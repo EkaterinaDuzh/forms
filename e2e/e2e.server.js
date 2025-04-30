@@ -1,9 +1,9 @@
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
-const config = require("../../../webpack.dev");
+const config = require("../webpack.config");
 
 const server = new WebpackDevServer(webpack(config), {});
-server.listen(8082, "localhost", (err) => {
+server.listen(9000, "localhost", (err) => {
   if (err) {
     return;
   }

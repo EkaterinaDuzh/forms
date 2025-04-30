@@ -3,10 +3,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  devtool: 'source-map',
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/[name][ext]',
     publicPath: '',
   },
   module: {
@@ -29,15 +29,31 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
+          MiniCssExtractPlugin.loader, {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+            }
+          }
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.svg$/,
         type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jpg|gif|ico)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            esModule: false,
+            name: '[name].[ext]',
+          },
+        }],
       },
     ],
   },
+
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
