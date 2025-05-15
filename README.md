@@ -1,1 +1,1 @@
-![CI](https://github.com/EkaterinaDuzh/forms/actions/workflows/web.yml/badge.svg)
+[![Build status](https://ci.appveyor.com/api/projects/status/eb3mubwgpmp29us1?svg=true)](https://ci.appveyor.com/project/EkaterinaDuzh/forms-2kbtn)
