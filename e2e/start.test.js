@@ -5,11 +5,13 @@ describe("page start", () => {
   let page;
   const baseUrl = "http://localhost:9000";
 
+  //запуск браузера
   beforeEach(async () => {
     browser = await puppeteer.launch({
-      headless: false, 
+      //опции при запуске браузера
+      headless: false, //чтобы показывать реальный браузер
       slowMo: 100,
-      devtools: true, 
+      devtools: true, //чтобы видеть инструменты разработчика
     });
 
     page = await browser.newPage();
@@ -17,9 +19,10 @@ describe("page start", () => {
 
   test("test", async () => {
     await page.goto(baseUrl);
-    await page.waitForSelector("body");
+    await page.waitForSelector("body"); //этот метод заставит браузер ждать появления селектора body
   });
 
+  //закрыть браузер
   afterAll(async () => {
     await browser.close();
   });

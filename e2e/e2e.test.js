@@ -1,6 +1,6 @@
 import puppetteer from "puppeteer";
 
-jest.setTimeout(30000);
+jest.setTimeout(30000); // default puppeteer timeout
 
 describe("tooltip", () => {
   let browser;
@@ -9,12 +9,13 @@ describe("tooltip", () => {
 
   beforeAll(async () => {
     browser = await puppetteer.launch({
-      headless: false, 
+      headless: false, // чтобы показывать реальный браузер
       slowMo: 250,
+      // devtools: true, // чтобы видеть инструменты разработчика
     });
-    page = await browser.newPage(); 
+    page = await browser.newPage(); //браузер открывает страницу
   });
-
+  //закрывает браузер
   afterAll(async () => {
     await browser.close();
   });
